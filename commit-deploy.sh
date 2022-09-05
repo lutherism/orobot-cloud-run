@@ -1,5 +1,6 @@
 git add .
 git commit . -m 'deploy'
 git push origin master
-gcloud config set project orobot-cloud-run
-printf 'y\n' | gcloud app deploy --stop-previous-version
+gcloud config set project robots-gateway
+cd src/run/orobot-cloud-run
+printf 'y\n' | gcloud run deploy --stop-previous-version
