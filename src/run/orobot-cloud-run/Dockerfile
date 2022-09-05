@@ -12,6 +12,18 @@ COPY . ./
 
 # Install production dependencies.
 RUN pip install --no-cache-dir -r requirements.txt
+RUN mkdir /home/git; \
+    cd /home/git; \
+    sudo git clone https://github.com/assimp/assimp.git -b master;
+
+RUN cd /home/git/assimp; \
+    cmake CMakeLists.txt -G 'Unix Makefiles'; \
+    make; \
+    make install;
+    #ldconfig;
+
+ RUN assimp help
+CMD rm -rf /home/out/* && mv /home/git/assimp/bin /home/out/bin && mv /home/git/assimp/lib /home/out/lib
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
