@@ -14,7 +14,7 @@ COPY . ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN mkdir /home/git; \
     cd /home/git; \
-    sudo git clone https://github.com/assimp/assimp.git -b master;
+    git clone https://github.com/assimp/assimp.git -b master;
 
 RUN cd /home/git/assimp; \
     cmake CMakeLists.txt -G 'Unix Makefiles'; \
