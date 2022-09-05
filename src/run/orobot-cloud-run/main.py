@@ -13,6 +13,7 @@ def hello_world():
 
 @app.route("/trigger/storage-object-create")
 def create_object():
+    app.logger.debug('Body: %s', request.get_data())
     return "Object created."
 
 
