@@ -1,7 +1,7 @@
 # Use the official lightweight Python image.
 # https://hub.docker.com/_/python
 FROM debian:buster
-RUN apt-get update && apt-get install -y git make gcc clang clang-tools cmake python3
+RUN apt-get update && apt-get install -y git make gcc clang clang-tools cmake python3 python3-pip
 
 # Allow statements and log messages to immediately appear in the Knative logs
 ENV PYTHONUNBUFFERED True
@@ -12,7 +12,7 @@ WORKDIR $APP_HOME
 COPY . ./
 
 # Install production dependencies.
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 RUN mkdir /home/git; \
     cd /home/git; \
     git clone https://github.com/assimp/assimp.git -b master;
