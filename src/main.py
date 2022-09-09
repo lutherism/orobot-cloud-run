@@ -18,9 +18,9 @@ def hello_world():
 def create_object():
     jsonBody = request.get_json()
     selfLink = jsonBody["selfLink"]
-    id = jsonBody["id"]
-    tmpPath = "/tmp/orobot-cloud-run/in/{0}".format(id);
-    tmpExportPath = "/tmp/orobot-cloud-run/export/{0}".format(id);
+    namr = jsonBody["name"]
+    tmpPath = "/tmp/orobot-cloud-run/in/{0}".format(name);
+    tmpExportPath = "/tmp/orobot-cloud-run/export/{0}".format(name);
     print('link: {0}'.format(json.dumps(request.get_json())))
     urllib.request.urlretrieve(
         selfLink,
