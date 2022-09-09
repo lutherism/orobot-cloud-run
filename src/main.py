@@ -14,12 +14,12 @@ def hello_world():
 @app.route("/trigger/storage-stl-create")
 def create_object():
     app.logger.debug('Body: %s', request.get_data())
-    urllib.request.urlretrieve(
-        'https://storage.googleapis.com/orobot-stls/1612589717209-battery_holder_v7.stl',
-        "orobot-stls/1612589717209-battery_holder_v7.stl")
-    scene = pyassimp.load("orobot-stls/1612589717209-battery_holder_v7.stl")
+    #urllib.request.urlretrieve(
+        #'https://storage.googleapis.com/orobot-stls/1612589717209-battery_holder_v7.stl',
+        #"orobot-stls/1612589717209-battery_holder_v7.stl")
+    #scene = pyassimp.load("orobot-stls/1612589717209-battery_holder_v7.stl")
     print("scene")
-    pyassimp.export(scene, "obj-output/1612589717209-battery_holder_v7.obj", "obj")
+    #pyassimp.export(scene, "obj-output/1612589717209-battery_holder_v7.obj", "obj")
     return "Object created."
 
 
