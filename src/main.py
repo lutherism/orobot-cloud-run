@@ -11,7 +11,7 @@ def hello_world():
     name = os.environ.get("NAME", "World")
     return "Hello {}!".format(name)
 
-@app.route("/trigger/storage-stl-create")
+@app.route("/trigger/storage-stl-create", methods = ['POST'])
 def create_object():
     app.logger.debug('Body: %s', request.get_data())
     #urllib.request.urlretrieve(
