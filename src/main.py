@@ -19,6 +19,7 @@ def hello_world():
 def create_object():
     jsonBody = request.get_json()
     mediaLink = jsonBody["mediaLink"]
+    name = jsonBody["name"]
     filename = str(uuid.uuid4())
     tmpPathDirs = "/tmp/orobot-cloud-run/in"
     tmpPath = "{0}/{1}.stl".format(tmpPathDirs, filename);
@@ -38,10 +39,10 @@ def create_object():
     print("scene")
     pyassimp.export(scene, tmpExportPath, "obj")
     print("obj created")
-    storage_client = storage.Client()
+    client = storage.Client()
 
     bucket = client.get_bucket('orobot-obj')
-    blob = bucket.blob(id)
+    blob = bucket.blob(name)
     blob.upload_from_filename(tmpExportPath)
     return "Object created."
 
