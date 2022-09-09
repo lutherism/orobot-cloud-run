@@ -24,7 +24,7 @@ def create_object():
     print('link: {0}'.format(json.dumps(request.get_json())))
     urllib.request.urlretrieve(
         selfLink,
-        "/tmp/{0}".format(id))
+        tmpPath)
         #"orobot-stls/1612589717209-battery_holder_v7.stl")
     scene = pyassimp.load(tmpPath)
     print("scene")
