@@ -1,0 +1,19 @@
+{
+  "kind": "storage#object",
+  "id": "orobot-stls/1662711445593-1612589717209-battery_holder_v7.stl/1662711447046029",
+  "selfLink": "https://www.googleapis.com/storage/v1/b/orobot-stls/o/1662711445593-1612589717209-battery_holder_v7.stl",
+  "mediaLink": "https://www.googleapis.com/download/storage/v1/b/orobot-stls/o/1662711445593-1612589717209-battery_holder_v7.stl?generation=1662711447046029&alt=media",
+  "name": "1662711445593-1612589717209-battery_holder_v7.stl",
+  "bucket": "orobot-stls",
+  "generation": "1662711447046029",
+  "metageneration": "1",
+  "contentType": "model/stl",
+  "storageClass": "STANDARD",
+  "size": "215484",
+  "md5Hash": "OE2+FY3lj340mZc0g70JnA==",
+  "crc32c": "YGMfRg==",
+  "etag": "CI2Pqemih/oCEAE=",
+  "timeCreated": "2022-09-09T08:17:27.053Z",
+  "updated": "2022-09-09T08:17:27.053Z",
+  "timeStorageClassUpdated": "2022-09-09T08:17:27.053Z"
+}

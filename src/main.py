@@ -18,20 +18,19 @@ def hello_world():
 @app.route("/trigger/storage-stl-create", methods = ['POST'])
 def create_object():
     jsonBody = request.get_json()
-    selfLink = jsonBody["selfLink"]
-    name = jsonBody["name"]
+    mediaLink = jsonBody["mediaLink"]
     filename = str(uuid.uuid4())
     tmpPathDirs = "/tmp/orobot-cloud-run/in"
-    tmpPath = "{0}/{1}".format(tmpPathDirs, filename);
+    tmpPath = "{0}/{1}.stl".format(tmpPathDirs, filename);
     tmpExportPathDirs = "/tmp/orobot-cloud-run/export"
-    tmpExportPath = "{0}/{1}".format(tmpExportPathDirs, filename);
+    tmpExportPath = "{0}/{1}.obj".format(tmpExportPathDirs, filename);
     if not os.path.exists(tmpPathDirs):
         os.makedirs(tmpPathDirs)
     if not os.path.exists(tmpExportPathDirs):
         os.makedirs(tmpExportPathDirs)
     print('link: {0}'.format(json.dumps(request.get_json())))
     urllib.request.urlretrieve(
-        selfLink,
+        mediaLink,
         tmpPath)
         #"orobot-stls/1612589717209-battery_holder_v7.stl")
     scene = pyassimp.load(tmpPath)
