@@ -32,10 +32,12 @@ def create_object():
     urllib.request.urlretrieve(
         mediaLink,
         tmpPath)
+    print("file downloaded")
         #"orobot-stls/1612589717209-battery_holder_v7.stl")
     scene = pyassimp.load(tmpPath)
     print("scene")
     pyassimp.export(scene, tmpExportPath, "obj")
+    print("obj created")
     credentials_dict = {
         'type': 'service_account',
         'client_id': os.environ['BACKUP_CLIENT_ID'],
