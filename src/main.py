@@ -6,6 +6,7 @@ import urllib.request
 import json
 from gcloud import storage
 from oauth2client.service_account import ServiceAccountCredentials
+import uuid
 
 app = Flask(__name__)
 
@@ -18,9 +19,16 @@ def hello_world():
 def create_object():
     jsonBody = request.get_json()
     selfLink = jsonBody["selfLink"]
-    namr = jsonBody["name"]
-    tmpPath = "/tmp/orobot-cloud-run/in/{0}".format(name);
-    tmpExportPath = "/tmp/orobot-cloud-run/export/{0}".format(name);
+    name = jsonBody["name"]
+    filename = str(uuid.uuid4())
+    tmpPathDirs = "/tmp/orobot-cloud-run/in"
+    tmpPath = "{0}/{1}".format(tmpPathDirs, filename);
+    tmpExportPathDirs = "/tmp/orobot-cloud-run/export"
+    tmpExportPath = "{0}/{1}".format(tmpExportPathDirs, filename);
+    if not os.path.exists(tmpPathDirs):
+        os.makedirs(tmpPathDirs)
+    if not os.path.exists(tmpExportPathDirs):
+        os.makedirs(tmpExportPathDirs)
     print('link: {0}'.format(json.dumps(request.get_json())))
     urllib.request.urlretrieve(
         selfLink,
