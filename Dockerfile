@@ -1,7 +1,7 @@
 # Use the official lightweight Python image.
 # https://hub.docker.com/_/python
 FROM debian:buster
-RUN apt-get update && apt-get install -y git make gcc clang clang-tools cmake python3 python3-pip
+RUN apt-get update && apt-get install -y git make gcc clang clang-tools cmake python3 python3-pip libassimp-dev
 
 # Allow statements and log messages to immediately appear in the Knative logs
 ENV PYTHONUNBUFFERED True
@@ -13,18 +13,18 @@ COPY . ./
 
 # Install production dependencies.
 RUN pip3 install --no-cache-dir -r requirements.txt
-RUN mkdir /home/git; \
-    cd /home/git; \
-    git clone https://github.com/assimp/assimp.git -b master;
+#RUN mkdir /home/git; \
+#    cd /home/git; \
+#    git clone https://github.com/assimp/assimp.git -b master;
 
-RUN cd /home/git/assimp; \
-    cmake CMakeLists.txt -G 'Unix Makefiles'; \
-    make; \
-    make install;
-    #ldconfig;
+# RUN cd /home/git/assimp; \
+#    cmake CMakeLists.txt -G 'Unix Makefiles'; \
+#    make; \
+#    make install;
+#    ldconfig;
 
-RUN assimp help
-CMD rm -rf /home/out/* && mv /home/git/assimp/bin /home/out/bin && mv /home/git/assimp/lib /home/out/lib
+#RUN assimp help
+#CMD rm -rf /home/out/* && mv /home/git/assimp/bin /home/out/bin && mv /home/git/assimp/lib /home/out/lib
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
