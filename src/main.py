@@ -44,6 +44,8 @@ def create_object():
     bucket = client.get_bucket('orobot-obj')
     blob = bucket.blob("{0}.obj".format(os.path.splitext(name)[0]))
     blob.upload_from_filename(tmpExportPath)
+    os.remove(tmpExportPath)
+    os.remove(tmpPath)
     return "Object created."
 
 
