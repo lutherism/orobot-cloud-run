@@ -3,6 +3,7 @@ import os
 from flask import Flask, request
 import pyassimp
 import urllib.request
+import json
 
 app = Flask(__name__)
 
@@ -13,7 +14,7 @@ def hello_world():
 
 @app.route("/trigger/storage-stl-create", methods = ['POST'])
 def create_object():
-    print('link: {0}'.format(request.get_json()["StorageObjectData"]["selfLink"]))
+    print('link: {0}'.format(json.dumps(request.get_json())))
     #urllib.request.urlretrieve(
         #'https://storage.googleapis.com/orobot-stls/1612589717209-battery_holder_v7.stl',
         #"orobot-stls/1612589717209-battery_holder_v7.stl")
