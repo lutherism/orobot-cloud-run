@@ -1,6 +1,6 @@
 # Use the official lightweight Python image.
 # https://hub.docker.com/_/python
-FROM debian:buster
+FROM us.gcr.io/robots-gateway/orobot-cloud-run/orobot-cloud-run:ce83659c46a4cc1c3956042918dbd0fb79c65e14
 RUN apt-get update && apt-get install -y git make gcc clang clang-tools cmake python3 python3-pip libassimp-dev
 
 # Allow statements and log messages to immediately appear in the Knative logs
