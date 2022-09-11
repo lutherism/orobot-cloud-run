@@ -40,7 +40,6 @@ def create_object():
     pyassimp.export(scene, tmpExportPath, "obj")
     print("obj created")
     client = storage.Client()
-
     bucket = client.get_bucket('orobot-obj')
     blob = bucket.blob("{0}.obj".format(os.path.splitext(name)[0]))
     blob.upload_from_filename(tmpExportPath)
